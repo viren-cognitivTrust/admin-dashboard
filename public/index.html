@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <button id="loadConfig">Load Global Config</button>
+    <pre id="output"></pre>
+    <script>
+      document.getElementById('loadConfig').addEventListener('click', async () => {
+        const response = await fetch('http://localhost:8011/config/all');
+        const data = await response.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      });
+    </script>
+  </body>
+</html>
